@@ -1,0 +1,15 @@
+name: Keep Replit Bot Alive
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Každých 5 minut
+  workflow_dispatch: # Můžeš spustit i ručně
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Replit Bot
+        run: |
+          echo "Pinging bot..."
+          curl -f "https://287a424e-97b8-4ac8-9a88-72cc89b592db-00-3ucsxau0e4du4.worf.replit.dev/ping"
+          echo "Bot pinged successfully!"
