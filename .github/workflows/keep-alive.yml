@@ -1,7 +1,7 @@
 name: Keep Replit Bot Alive
 on:
   schedule:
-    - cron: '0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57 * * * *' # Každé 3 minuty
+    - cron: '*/10 * * * *' # Každých 10 minut
   workflow_dispatch: # Můžeš spustit i ručně
 
 jobs:
@@ -11,5 +11,6 @@ jobs:
       - name: Ping Replit Bot
         run: |
           echo "Pinging bot..."
-          curl -f --max-time 30 --retry 3 --user-agent "GitHub-Actions-KeepAlive" "https://287a424e-97b8-4ac8-9a88-72cc89b592db-00-3ucsxau0e4du4.worf.replit.dev/ping"
-          echo "Bot pinged successfully!"
+          sleep $((RANDOM % 30))
+          curl --max-time 60 --retry 2 --retry-delay 5 --user-agent "Mozilla/5.0" "https://287a424e-97b8-4ac8-9a88-72cc89b592db-00-3ucsxau0e4du4.worf.replit.dev/ping"
+          echo "\nBot pinged successfully!"
