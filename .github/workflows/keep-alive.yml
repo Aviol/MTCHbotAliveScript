@@ -11,5 +11,5 @@ jobs:
       - name: Ping Replit Bot
         run: |
           echo "Pinging bot..."
-          curl -f "https://287a424e-97b8-4ac8-9a88-72cc89b592db-00-3ucsxau0e4du4.worf.replit.dev/ping"
+          curl -f --max-time 30 --retry 3 --user-agent "GitHub-Actions-KeepAlive" "https://287a424e-97b8-4ac8-9a88-72cc89b592db-00-3ucsxau0e4du4.worf.replit.dev/ping"
           echo "Bot pinged successfully!"
